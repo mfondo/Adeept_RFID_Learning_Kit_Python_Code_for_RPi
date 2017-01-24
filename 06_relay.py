@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 
-RelayPin = 11    # pin11
+RelayPin = 12    # pin11
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)         # Numbers pins by physical location

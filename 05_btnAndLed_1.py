@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
+import time
 
 LedPin = 11    # pin11 --- led
 BtnPin = 12    # pin12 --- button
@@ -18,6 +19,7 @@ def loop():
 		else:
 			print 'led off...'
 			GPIO.output(LedPin, GPIO.HIGH) # led off
+		time.sleep(5)	
 
 def destroy():
 	GPIO.output(LedPin, GPIO.HIGH)     # led off

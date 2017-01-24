@@ -11,11 +11,30 @@ def setup():
 		GPIO.output(pin, GPIO.HIGH) # Set all pins to high(+3.3V) to off led
 
 def loop():
-	while True:
-		for pin in pins:
-			GPIO.output(pin, GPIO.LOW)	
-			time.sleep(0.5)
-			GPIO.output(pin, GPIO.HIGH)
+        i = 0
+        pin = None
+        ascend = True
+        while True:
+                pin = pins[i]
+                GPIO.output(pin, GPIO.LOW)	
+                time.sleep(0.1)
+                GPIO.output(pin, GPIO.HIGH)
+                if ascend:
+                        i = i + 1
+                        if i >= len(pins):
+                                i = i - 2
+                                ascend = False
+                else:
+                        i = i - 1
+                        if i < 0:
+                                i = i + 2
+                                ascend = True
+		
+	#while True:
+	#	for pin in pins:
+	#		GPIO.output(pin, GPIO.LOW)	
+	#		time.sleep(0.1)
+	#		GPIO.output(pin, GPIO.HIGH)
 
 def destroy():
 	for pin in pins:
